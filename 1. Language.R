@@ -3,7 +3,7 @@
 # Variable assignment happens with <-
 a <- 3
 
-# It also works with =
+# It also works with = (and used to work with _)
 b = 3
 a + b
 
@@ -29,16 +29,19 @@ is.vector(v2)
 
 # Vectors can have "names" 
 names(v2) <- c("one", "two", "three")
+v2
 
 # Can examine the structure of an object via str()
 str(v2)
 
 # Vectors are homogeneous, so implicit conversions happen
 v3 <- c(1, "2", 3)
+v3
 class(v3)
 
 # Lists are heterogeneous collections
 l1 <- list(1, "2", 3)
+l1
 
 # Remember that it is a list of vectors
 is.vector(l1[1])
@@ -47,6 +50,6 @@ class(l1[[1]])
 # Dataframes are a collection of dataframes
 # mtcars is a built-in dataset
 df1 <- mtcars
+class(df1)
 str(df1)
-class(df1[[1]])
-
+class(df1[1])

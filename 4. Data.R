@@ -1,4 +1,4 @@
-# Lots of ways to work with data in R
+# R Works great with SQL data
 
 library(RODBC)
 conn <- odbcConnect("baseball")
