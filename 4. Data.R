@@ -1,8 +1,13 @@
 # R Works great with SQL data
-
 library(RODBC)
+
+# Specify a system/user data source name
 conn <- odbcConnect("baseball")
 
+# Dump the tables in the database into a dataframe
+tables <- sqlTables(conn)
+
+# Perform a dynamic SQL query
 batters <- sqlQuery(conn, "select * from Batting", stringsAsFactors = FALSE)
 
 # Examine it in Variable Explorer
@@ -24,6 +29,7 @@ hr_leader_details
 # We can do joins locally too
 master <- sqlQuery(conn, "select * from Master", stringsAsFactors = FALSE)
 
+# dplyr "d plyer" is a data manipulation library
 library(dplyr)
 hr_local_join <- batters %>%
     inner_join(master, by = "playerID") %>%
@@ -57,7 +63,8 @@ rollup <- function(df) {
     result <- df %>%
         group_by(playerID, yearID) %>%
         summarize(
-            G = sum(G), AB = sum(AB), R = sum(R), H = sum(H), H2B = sum(X2B), H3B = sum(X3B), HR = sum(HR), RBI = sum(RBI), SB = sum(SB), CS = sum(CS), BB = sum(BB), SO = sum(SO), IBB = sum(IBB), HBP = sum(HBP), SH = sum(SH), SF = sum(SF), GIDP = sum(GIDP))
+            G = sum(G), AB = sum(AB), R = sum(R), H = sum(H), H2B = sum(X2B), H3B = sum(X3B), HR = sum(HR), RBI = sum(RBI), SB = sum(SB), CS = sum(CS), BB = sum(BB), SO = sum(SO), IBB = sum(IBB), HBP = sum(HBP), SH = sum(SH), SF = sum(SF), GIDP = sum(GIDP)) %>%
+        as.data.frame() 
     result
 }
 
