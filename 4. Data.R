@@ -75,9 +75,4 @@ batters <- rollup(batters)
 
 # So far, we have been looking at R as an equivalence class of SQL
 # Though a) slower, b) more limited size of data sets. 
-# Let's look at it through a new lens: visualization
-
-# Look at a plot of HR vs. RBI for all hitters with > 50 AB
-hitters <- batters %>%
-    filter(AB > 50)
-plot(hitters$AB, hitters$H)
+# Let's look at it through a new lens: visualization in next section
