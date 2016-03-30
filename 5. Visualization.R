@@ -11,6 +11,7 @@ rollup <- function(df) {
 }
 
 # Read data from CSV file (for a change)
+# Introduce the file IntelliSense
 batting <- read.csv("Batting.csv", stringsAsFactors = FALSE)
 
 library(dplyr)
